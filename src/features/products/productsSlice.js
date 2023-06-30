@@ -289,9 +289,11 @@ export const productsSlice = createSlice({
           : item
       );
 
+      // state.oldBillGatesMoney += ( state.oldBillGatesMoney + state.diff > 100000000000 ? ( 100000000000 - state.oldBillGatesMoney) : state.diff );
       state.oldBillGatesMoney += state.diff;
       state.billGatesMoney -= state.billGatesMoney - num >= 0 ? num : 0;
       state.diff = -num;
+      console.log(state.billGatesMoney, state.oldBillGatesMoney);
     },
     decNumber: (state, action) => {
       const { name, num, amount } = action.payload;
@@ -303,6 +305,7 @@ export const productsSlice = createSlice({
       state.billGatesMoney = num + state.billGatesMoney;
       state.oldBillGatesMoney += state.diff;
       state.diff = num;
+      console.log(state.billGatesMoney, state.oldBillGatesMoney);
     },
   },
 });
