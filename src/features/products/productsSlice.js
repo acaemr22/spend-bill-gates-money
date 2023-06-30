@@ -277,8 +277,8 @@ export const productsSlice = createSlice({
         number: 0,
       },
     ],
-    decInterval: null,
-    incInterval: null,
+    diff: 0,
+    oldBillGatesMoney: 100000000000,
   },
   reducers: {
     incNumber: (state, action) => {
@@ -289,7 +289,9 @@ export const productsSlice = createSlice({
           : item
       );
 
+      state.oldBillGatesMoney += state.diff;
       state.billGatesMoney -= state.billGatesMoney - num >= 0 ? num : 0;
+      state.diff = -num;
     },
     decNumber: (state, action) => {
       const { name, num, amount } = action.payload;
@@ -299,6 +301,8 @@ export const productsSlice = createSlice({
           : item
       );
       state.billGatesMoney = num + state.billGatesMoney;
+      state.oldBillGatesMoney += state.diff;
+      state.diff = num;
     },
   },
 });
