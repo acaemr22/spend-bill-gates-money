@@ -10,7 +10,7 @@ const Number = ({ numOld, numNew }) => {
     from: { number: numOld },
     number: numNew,
     delay: 0,
-    config: { mass: 1, tension: 30, friction: 10 },
+    config: { mass: 1, tension: 20, friction: 10 },
   });
   return (
     <animated.div>
